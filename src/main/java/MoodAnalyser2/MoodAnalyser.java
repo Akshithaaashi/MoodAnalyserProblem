@@ -23,15 +23,18 @@ public class MoodAnalyser {
 	 * Ability to check the given string in the given message
 	 * @return HAPPY or SAD
 	 */
-	public String analyseMood() {
-		try {	
+	public String analyseMood() throws MoodAnalyserException {
+		try {
+			if (message=="") {
+				throw new MoodAnalyserException ("Invalid",MoodAnalyserException.ExceptionType.ENTERED_EMPTY);
+			}
 			if (message.contains("Sad")) {
 				return "SAD";
 			} else {
 				return "HAPPY";
 			}
 		} catch (NullPointerException e) {
-			return "HAPPY";
+			throw new MoodAnalyserException ("Invalid",MoodAnalyserException.ExceptionType.ENTERED_NULL);
 		}
 	}
 	
