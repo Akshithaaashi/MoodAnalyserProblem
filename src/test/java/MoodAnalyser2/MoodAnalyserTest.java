@@ -30,4 +30,15 @@ public class MoodAnalyserTest {
 				Assert.assertEquals("Invalid", e.getMessage());
 			}
 		}
+		
+		//Test case for Empty
+		@Test
+		public void givenMessage_whenEmpty_shouldReturn_Null() {
+			try {
+				MoodAnalyser moodAnalyser = new MoodAnalyser("");
+				moodAnalyser.analyseMood();
+			} catch (MoodAnalyserException e) {
+				Assert.assertEquals(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, e.exceptionType);
+			}
+		}
 	}
